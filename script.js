@@ -11,7 +11,7 @@ let button = document.getElementById("button");
 let input = document.getElementById("input");
 
 button.addEventListener('click',create)
-
+/*
 function display() {
 document.getElementById("todo").innerHTML = data.todo.join('<br>');
 document.getElementById("test").innerHTML = data.test.join('<br>');
@@ -19,6 +19,9 @@ document.getElementById("done").innerHTML = data.done.join('<br>');
 }
 
 //display();
+*/
+
+
 createDisplay()
 function createDisplay(){
     ulIce.innerHTML ="";

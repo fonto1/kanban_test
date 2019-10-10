@@ -3,6 +3,9 @@
     display: flex;
 }
 
+ul{
+    list-style: none;
+}
 
 .boards {
     width: 200px;
