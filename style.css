@@ -1,0 +1,13 @@
+
+.container{
+    display: flex;
+}
+
+
+.boards {
+    width: 200px;
+    height: 700px;
+    border: 1px solid orangered;
+    margin: 5px;
+    flex-wrap: nowrap;
+}
