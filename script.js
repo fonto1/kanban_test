@@ -35,6 +35,7 @@ function createDisplay(){
          ulIce.append(li);
 
          console.log(text);
+         input.value = "";
     })
 }
 
