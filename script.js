@@ -24,7 +24,7 @@ document.getElementById("done").innerHTML = data.done.join('<br>');
 
 createDisplay()
 function createDisplay(){
-    ulIce.innerHTML ="";
+   ulIce.innerHTML ="Icebox";
     
     data.icebox.forEach(function(content){
          
