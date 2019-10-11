@@ -1,46 +1,93 @@
 let data = {
-    icebox : ["hoppa","gråta"],
-    todo : ["leka"],
-    doing :["äta"],
-    test : ["jobba", "läsa"],
-    done : ["musik","måla"]
+    icebox: ["hoppa", "gråta"],
+    todo: ["leka"],
+    doing: ["äta"],
+    test: ["jobba", "läsa"],
+    done: ["musik", "måla"]
 }
 
-let ulIce = document.getElementById("icebox");
+let boards = document.querySelectorAll(".boards");
+let key = 0;
+let icebox = document.getElementById("icebox");
+let todo = document.getElementById("todo");
+let doing = document.getElementById("doing");
+let test = document.getElementById("test");
+let done = document.getElementById("done");
+
+
+
+
 let button = document.getElementById("button");
 let input = document.getElementById("input");
 
-button.addEventListener('click',create)
+button.addEventListener('click', create)
 /*
-function display() {
-document.getElementById("todo").innerHTML = data.todo.join('<br>');
-document.getElementById("test").innerHTML = data.test.join('<br>');
-document.getElementById("done").innerHTML = data.done.join('<br>');
-}
-
-//display();
+document.querySelectorAll(".drag").forEach(function (drag) {
+    drag.addEventListener('dragstart', dragStart)
+    drag.addEventListener('dragend', dragEnd)
+})
 */
 
+boards.forEach(function (emp) {
+    emp.addEventListener('dragstart', dragStart)
+    emp.addEventListener("dragover", dragOver)
+    emp.addEventListener("drop", dragDrop)
+});
 
-createDisplay()
-function createDisplay(){
-   ulIce.innerHTML ="Icebox";
-    
-    data.icebox.forEach(function(content){
-         
-         let li = document.createElement("li");
-         let text = document.createTextNode(content)
-         li.append(text);
-         li.setAttribute('draggable', true);
-         ulIce.append(li);
 
-         console.log(text);
-         input.value = "";
+function dragStart(evt) {
+    evt.dataTransfer.setData("text", evt.target.id);
+    console.log("dragging...")
+}
+
+function dragEnd() {
+    console.log("ending....")
+}
+
+function display() {
+    boards.forEach(function (bor) {
+        bor.innerHTML = " "
+    });
+
+    ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
+        document.getElementById(info).innerHTML += data[info].map(function (item) {
+            key++
+            return `<li id="${key}" class="drag" draggable='true'>${item}</li>`
+        }).join(" ");
+
     })
+    key = 0;
+}
+
+display();
+
+
+
+function create() {
+    data.icebox.push(input.value);
+    display();
 }
 
 
-function create(){
-   data.icebox.push(input.value);
-   createDisplay();
+
+
+
+function dragOver(e) {
+    e.preventDefault();
+    console.log("over")
+}
+
+function dragDrop(evt) {
+
+    if(evt.target.className == 'boards'){
+    evt.preventDefault();
+    
+    let db = evt.dataTransfer.getData("text");
+    console.log(db)
+        console.log(evt.dataTransfer.getData("text"))
+        console.log("dropped")
+        evt.target.appendChild(document.getElementById(db));
+
+}
+
 }
