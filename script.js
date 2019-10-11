@@ -33,8 +33,30 @@ boards.forEach(function (emp) {
     emp.addEventListener('dragstart', dragStart)
     emp.addEventListener("dragover", dragOver)
     emp.addEventListener("drop", dragDrop)
+    emp.addEventListener("click",del)
 });
 
+function del(){
+    let element = event.target;
+    let object = element.parentElement.innerText
+    let parent = element.parentElement.parentElement.id
+    if (element.className == "fas fa-trash-alt"){
+        
+        let b = data[parent].indexOf(object);
+   
+        
+        console.log(object)
+        console.log(typeof(object))
+       console.log(data[parent].indexOf("musik"))
+       console.log(data[parent].indexOf(object))
+        console.log(typeof(data.done[0]))
+        console.log(b);
+
+
+    }
+
+
+}
 
 function dragStart(evt) {
     evt.dataTransfer.setData("text", evt.target.id);
@@ -53,7 +75,7 @@ function display() {
     ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
         document.getElementById(info).innerHTML += data[info].map(function (item) {
             key++
-            return `<li id="${key}" class="drag" draggable='true'>${item}</li>`
+            return `<li id="${key}" class="drag" draggable='true'>${item} <i class="fas fa-trash-alt"></i></li>`
         }).join(" ");
 
     })
