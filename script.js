@@ -13,6 +13,7 @@ let todo = document.getElementById("todo");
 let doing = document.getElementById("doing");
 let test = document.getElementById("test");
 let done = document.getElementById("done");
+let index= "index";
 
 
 
@@ -46,7 +47,7 @@ function dragEnd() {
 
 function display() {
     boards.forEach(function (bor) {
-        bor.innerHTML = " "
+        bor.innerHTML = bor.id;
     });
 
     ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
@@ -69,9 +70,6 @@ function create() {
 }
 
 
-
-
-
 function dragOver(e) {
     e.preventDefault();
     console.log("over")
@@ -91,3 +89,13 @@ function dragDrop(evt) {
 }
 
 }
+
+/*
+function save(){
+    localStorage.setItem(index,JSON.stringify(data))
+}
+
+function get(){
+    let data = JSON.parse(localStorage.getItem(index))
+}
+*/
