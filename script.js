@@ -13,7 +13,7 @@ let todo = document.getElementById("todo");
 let doing = document.getElementById("doing");
 let test = document.getElementById("test");
 let done = document.getElementById("done");
-let index= "index";
+let index = "index";
 
 
 
@@ -77,16 +77,13 @@ function dragOver(e) {
 
 function dragDrop(evt) {
 
-    if(evt.target.className == 'boards'){
-    evt.preventDefault();
-    
-    let db = evt.dataTransfer.getData("text");
-    console.log(db)
-        console.log(evt.dataTransfer.getData("text"))
+    if (evt.target.className == 'boards') {
+        evt.preventDefault();
+        let db = evt.dataTransfer.getData("text");
         console.log("dropped")
         evt.target.appendChild(document.getElementById(db));
 
-}
+    }
 
 }
 
