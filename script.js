@@ -78,6 +78,7 @@ display();
 
 
 function create() {
+    input.innerHTML ="";
     data.icebox.push(input.value);
     display();
 }
