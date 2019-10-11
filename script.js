@@ -78,8 +78,8 @@ display();
 
 
 function create() {
-    input.value ="";
     data.icebox.push(input.value);
+    input.value ="";
     display();
 }
 
