@@ -1,0 +1,22 @@
+
+ 
+  // new code saving gathering info about object we are going to save
+        let holder = evt.target.getAttribute('id');
+        let txt = evt.target.children[0].children[0].value;
+        let info = { id: data, content: txt, owner: holder };
+        console.log(info);
+        items.push(info);
+        localStorage.setItem("items", JSON.stringify(items));
+    }
+}
+// going throgh the cycle in the  local st and insert in the  needed column
+for (let item of items) {
+    let existingNode = `
+		<div class="job" id="${item.id}" draggable="true">
+			<input type="text" value="${item.content}">
+		</div>
+	`;
+    document.getElementById(item.owner).insertAdjacentHTML('beforeend', existingNode);
+}
+
+/**/
