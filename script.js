@@ -95,17 +95,30 @@ function dragDrop(evt) {
         evt.preventDefault();
         let db = evt.dataTransfer.getData("text");
         console.log("dropped")
+        push(evt)
         evt.target.appendChild(document.getElementById(db));
-
+        console.log(db)
     }
 
 }
+
+function push(evt){
+    let id = evt.dataTransfer.getData("text");
+    let newtarget = evt.target.id;
+    let currentValue = document.getElementById(id).innerText     // value
+    let fromTarget = document.getElementById(id).parentElement.id  // from id
+    data[newtarget].push(currentValue)
+    data[fromTarget].splice(data[fromTarget].indexOf(currentValue),1);
+
+   console.log(data[fromTarget]);
+   console.log(data[newtarget]);
+}
+
 
 /*
 function save(){
     localStorage.setItem(index,JSON.stringify(data))
 }
-
 function get(){
     let data = JSON.parse(localStorage.getItem(index))
 }
