@@ -100,27 +100,37 @@ function dragDrop(evt) {
     }
 
 }
-//new function logIn(){
-//trying again
-function logIn() {
 
-    if (login == 'nara' && password == '123') {
-        style.display = "block";
-    } else if (login == 'al' && password == 'java') {
-        style.display = "block";
-    } else if (login == 'fon' && password == 'script') {
-        style.display = "block";
-    } else {
-        alert('incorrect login or pass');
+function ready() {
+
+    var logged = document.getElementById("logged");
+    var fail = document.getElementById("fail");
+
+    var lName = localStorage.getItem("name");
+    var lPass = localStorage.getItem("password");
+    console.log(lName, lPass);
+    if (name == lName && password == lPass) {
+        logged.style.display = 'block';
     }
-}
 
-/*
-function save(){
-    localStorage.setItem(index,JSON.stringify(data))
+    var btn = document.getElementById("login-btn");
+    btn.addEventListener("click", function(event) {
+        event.preventDefault();
+        let username = document.getElementById("username").value;
+        let userpass = document.getElementById("userpass").value;
+        if (username == '' || userpass == '') {
+            alert('empty');
+        } else {
+            if (name == username && password == userpass) {
+                localStorage.setItem("name", username);
+                localStorage.setItem("password", userpass);
+                logged.style.display = 'block';
+                fail.style.display = 'none';
+            } else if (name != username || password != userpass) {
+                fail.style.display = 'block';
+            } else {
+                return false;
+            }
+        }
+    });
 }
-
-function get(){
-    let data = JSON.parse(localStorage.getItem(index))
-}
-*/

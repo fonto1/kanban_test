@@ -12,13 +12,22 @@
 
 <body>
 
-    <input type=“text” id=“login” placeholder="login">
-    <br>
+    <input type="text" name="username" id="username" value="" placeholder="enter login" min-length="1" required>
+
+    <input type="text" name="userpass" id="userpass" value="" placeholder="enter password" min-length="1" required>
+
+    <button type="submit" id="login-btn">enter</button>
 
 
-    <input type=“password” id=“pass” placeholder="password">
+    <div id="logged" style="display: none;">
+        <h1> ENJOY</h1>
+    </div>
+    <div id="fail" style="display: none;">
+        <h1>failed</h1>
+    </div>
 
-    <button id="check">enter</button>
+
+
 
 
     <div id="inputs">
