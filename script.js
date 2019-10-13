@@ -22,27 +22,27 @@ let button = document.getElementById("button");
 let input = document.getElementById("input");
 
 button.addEventListener('click', create)
-/*
-document.querySelectorAll(".drag").forEach(function (drag) {
-    drag.addEventListener('dragstart', dragStart)
-    drag.addEventListener('dragend', dragEnd)
-})
-*/
+    /*
+    document.querySelectorAll(".drag").forEach(function (drag) {
+        drag.addEventListener('dragstart', dragStart)
+        drag.addEventListener('dragend', dragEnd)
+    })
+    */
 
-boards.forEach(function (emp) {
+boards.forEach(function(emp) {
     emp.addEventListener('dragstart', dragStart)
     emp.addEventListener("dragover", dragOver)
     emp.addEventListener("drop", dragDrop)
-    emp.addEventListener("click",del)
+    emp.addEventListener("click", del)
 });
 
-function del(){
+function del() {
     let element = event.target;
     let todoObject = element.parentElement.innerText
     let parent = element.parentElement.parentElement.id
-    if (element.className == "fas fa-trash-alt"){
+    if (element.className == "fas fa-trash-alt") {
         let objId = data[parent].indexOf(todoObject);
-        data[parent].splice(objId,1);
+        data[parent].splice(objId, 1);
         display();
     }
 
@@ -59,12 +59,12 @@ function dragEnd() {
 }
 
 function display() {
-    boards.forEach(function (bor) {
+    boards.forEach(function(bor) {
         bor.innerHTML = bor.id;
     });
 
-    ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
-        document.getElementById(info).innerHTML += data[info].map(function (item) {
+    ["icebox", "todo", "doing", "test", "done"].forEach(function(info) {
+        document.getElementById(info).innerHTML += data[info].map(function(item) {
             key++
             return `<li id="${key}" class="drag" draggable='true'>${item}<i class="fas fa-trash-alt"></i></li>`
         }).join(" ");
@@ -79,7 +79,7 @@ display();
 
 function create() {
     data.icebox.push(input.value);
-    input.value ="";
+    input.value = "";
     display();
 }
 
@@ -99,6 +99,20 @@ function dragDrop(evt) {
 
     }
 
+}
+//new function logIn(){
+//trying again
+function logIn() {
+
+    if (login == 'nara' && password == '123') {
+        style.display = "block";
+    } else if (login == 'al' && password == 'java') {
+        style.display = "block";
+    } else if (login == 'fon' && password == 'script') {
+        style.display = "block";
+    } else {
+        alert('incorrect login or pass');
+    }
 }
 
 /*
