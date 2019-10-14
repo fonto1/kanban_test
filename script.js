@@ -115,12 +115,60 @@ function push(evt){
 }
 
 
-/*
-function save(){
-    localStorage.setItem(index,JSON.stringify(data))
-}
+// ____________ localstorage
+let login_but = document.querySelector('.login_button');
+login_but.addEventListener('click',function(login){              // complain about, probably need login_but
+   if(localStorage.getItem("index")) {
+       let temp = JSON.parse(localStorage.getItem("index"));
+       data = temp;
+       }
+   // if not - create an empty []
+   else {
+       data = [];
+       };
+   display();
+});
+let logout_but = document.querySelector('.logout_button');
+logout_but.addEventListener('click',function(logout){
+   localStorage.clear();
+   localStorage.setItem(index,JSON.stringify(data))
+   console.log("logout");
+});
 
-function get(){
-    let data = JSON.parse(localStorage.getItem(index))
-}
-*/
+
+
+
+
+//aleksandra 
+function ready() {
+    
+    var logged = document.getElementById(“logged”);
+    var fail = document.getElementById(“fail”);
+    var lName = localStorage.getItem(“name”);
+    var lPass = localStorage.getItem(“password”);
+    
+    console.log(lName,lPass);
+    if(name == lName && password == lPass){
+        logged.style.display = ‘block’;
+    }
+    var btn = document.getElementById(“login-btn”);    
+    btn.addEventListener(“click”, function(event){
+        event.preventDefault();        
+        var username = document.getElementById(“username”).value;
+        var userpass = document.getElementById(“userpass”).value;
+        if(username == ‘’ || userpass == ‘’){
+            alert(‘empty’);
+        }else{
+            if(name == username && password == userpass){
+                localStorage.setItem(“name”, username);
+                localStorage.setItem(“password”, userpass);
+                logged.style.display = ‘block’;
+                fail.style.display = ‘none’;
+            }
+            else if(name != username || password != userpass){
+                fail.style.display = ‘block’;
+            }else{
+                return false;
+            }
+        }        
+    });
