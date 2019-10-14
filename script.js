@@ -6,6 +6,8 @@ let data = {
     done: ["musik", "måla"]
 }
 
+let username = "fon";
+let password = "fon";
 let boards = document.querySelectorAll(".boards");
 let key = 0;
 let icebox = document.getElementById("icebox");
@@ -73,7 +75,7 @@ function display() {
     key = 0;
 }
 
-display();
+
 
 
 
@@ -115,12 +117,44 @@ function push(evt){
 }
 
 
+// ____________ localstorage
+let login_but = document.querySelector(".login_button")
 /*
-function save(){
-    localStorage.setItem(index,JSON.stringify(data))
-}
-
-function get(){
-    let data = JSON.parse(localStorage.getItem(index))
-}
+ login_but.addEventListener('click',function(login){              // complain about, probably need login_but
+   if(localStorage.getItem("index")) {
+       let temp = JSON.parse(localStorage.getItem("index"));
+       data = temp;
+       }
+   // if not - create an empty []
+   else {
+       data = [];
+       };
+   display();
+});
 */
+let logout_but = document.querySelector('.log_out');
+logout_but.addEventListener('click',function(logout){
+   localStorage.clear();
+   localStorage.setItem(index,JSON.stringify(data))
+   console.log("logout");
+});
+
+
+login_but.addEventListener('click', ready)
+
+
+//aleksandra 
+function ready() {
+
+    let inputUser = document.getElementById("username");
+    let inputPass = document.getElementById("userpass")
+
+    if(username == inputUser.value && password == inputPass.value){
+        display();
+        document.getElementById("userScreen").style.display = 'block';
+        document.getElementById("loginScreen").style.display = 'none';
+        
+    } else {
+        alert("Wrong Username or Password");
+    }
+}
