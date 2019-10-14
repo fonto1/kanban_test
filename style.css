@@ -27,3 +27,6 @@ span{
     text-align: center;
 }
 
+#userScreen {
+    display: none;
+}

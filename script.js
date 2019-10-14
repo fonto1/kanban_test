@@ -6,6 +6,8 @@ let data = {
     done: ["musik", "måla"]
 }
 
+let username = "fon";
+let password = "fon";
 let boards = document.querySelectorAll(".boards");
 let key = 0;
 let icebox = document.getElementById("icebox");
@@ -73,7 +75,7 @@ function display() {
     key = 0;
 }
 
-display();
+
 
 
 
@@ -116,8 +118,9 @@ function push(evt){
 
 
 // ____________ localstorage
-let login_but = document.querySelector('.login_button');
-login_but.addEventListener('click',function(login){              // complain about, probably need login_but
+let login_but = document.querySelector(".login_button")
+/*
+ login_but.addEventListener('click',function(login){              // complain about, probably need login_but
    if(localStorage.getItem("index")) {
        let temp = JSON.parse(localStorage.getItem("index"));
        data = temp;
@@ -128,7 +131,8 @@ login_but.addEventListener('click',function(login){              // complain abo
        };
    display();
 });
-let logout_but = document.querySelector('.logout_button');
+*/
+let logout_but = document.querySelector('.log_out');
 logout_but.addEventListener('click',function(logout){
    localStorage.clear();
    localStorage.setItem(index,JSON.stringify(data))
@@ -136,39 +140,21 @@ logout_but.addEventListener('click',function(logout){
 });
 
 
-
+login_but.addEventListener('click', ready)
 
 
 //aleksandra 
 function ready() {
-    
-    var logged = document.getElementById(“logged”);
-    var fail = document.getElementById(“fail”);
-    var lName = localStorage.getItem(“name”);
-    var lPass = localStorage.getItem(“password”);
-    
-    console.log(lName,lPass);
-    if(name == lName && password == lPass){
-        logged.style.display = ‘block’;
+
+    let inputUser = document.getElementById("username");
+    let inputPass = document.getElementById("userpass")
+
+    if(username == inputUser.value && password == inputPass.value){
+        display();
+        document.getElementById("userScreen").style.display = 'block';
+        document.getElementById("loginScreen").style.display = 'none';
+        
+    } else {
+        alert("Wrong Username or Password");
     }
-    var btn = document.getElementById(“login-btn”);    
-    btn.addEventListener(“click”, function(event){
-        event.preventDefault();        
-        var username = document.getElementById(“username”).value;
-        var userpass = document.getElementById(“userpass”).value;
-        if(username == ‘’ || userpass == ‘’){
-            alert(‘empty’);
-        }else{
-            if(name == username && password == userpass){
-                localStorage.setItem(“name”, username);
-                localStorage.setItem(“password”, userpass);
-                logged.style.display = ‘block’;
-                fail.style.display = ‘none’;
-            }
-            else if(name != username || password != userpass){
-                fail.style.display = ‘block’;
-            }else{
-                return false;
-            }
-        }        
-    });
+}
