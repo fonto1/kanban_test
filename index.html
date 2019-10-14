@@ -11,34 +11,39 @@
 </head>
 
 <body>
-    <input type=“text” id=“login” placeholder=“login”>
-    <br>
-    <input type=“password” id=“pass” placeholder=“password”>
-    <div id=“logged” style=“display: none;“>
-        <h1>logged in </h1>
+    <input type="text" name="username" id="username" value="" placeholder="enter login" required>
+
+    <input type="text" name="userpass" id="userpass" value="" placeholder="enter password" required>
+
+    <button type="submit" id=".login_btn">log in</button>
+    <button type="submit" id="log_out">log out</button>
+
+    <div id="logged" style="display: none;">
+        <h1> ENJOY</h1>
     </div>
-    <div id=“fail” style=“display: none;“>
-        <h1>fail to logged in</h1>
+    <div id="fail" style="display: none;">
+        <h1>failed</h1>
+    </div>
 
 
 
 
 
-        <div id="inputs">
-            <button id="button">Hej</button>
-            <input id="input" type="text">
-        </div>
-        <div id="page" class="container">
+    <div id="inputs">
+        <button id="button">Hej</button>
+        <input id="input" type="text">
+    </div>
+    <div id="page" class="container">
 
-            <ul id="icebox" class="boards">icebox</ul>
-            <ul id="todo" class="boards">todo</ul>
-            <ul id="doing" class="boards">doing</ul>
-            <ul id="test" class="boards">test</ul>
-            <ul id="done" class="boards">done</ul>
-        </div>
+        <ul id="icebox" class="boards">icebox</ul>
+        <ul id="todo" class="boards">todo</ul>
+        <ul id="doing" class="boards">doing</ul>
+        <ul id="test" class="boards">test</ul>
+        <ul id="done" class="boards">done</ul>
+    </div>
 
 
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
