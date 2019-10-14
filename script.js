@@ -139,6 +139,30 @@ logout_but.addEventListener('click',function(logout){
     console.log("logout");
 });
 
+// ____________ localstorage
+
+let login_but = document.querySelector('.login_button');
+
+login_but.addEventListener('click',function(login){
+    if(localStorage.getItem("index")) {
+        let temp = JSON.parse(localStorage.getItem("index"));
+        data = temp;               
+        } 
+    // if not - create an empty []
+
+    else { 
+        data = [];        
+        }; 
+    display(); 
+});
+
+let logout_but = document.querySelector('.logout_button');
+
+logout_but.addEventListener('click',function(logout){
+    localStorage.clear();   
+    localStorage.setItem(index,JSON.stringify(data))
+    console.log("logout");
+});
 /*
 function save(){
     localStorage.setItem(index,JSON.stringify(data))
