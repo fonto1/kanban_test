@@ -1,13 +1,24 @@
+fetch("users.json")
+.then((response)=>{
+    
+    return response.json();
+})
+.then((data1)=>{
+    let dataSet1 = data1
+    console.log(dataSet1);
+
+
+
+// ---------------------------------
 let data = {
-    icebox: ["hoppa", "gråta"],
-    todo: ["leka"],
-    doing: ["äta"],
-    test: ["jobba", "läsa"],
-    done: ["musik", "måla"]
+     icebox: ["hoppa", "gråta"],
+     todo: ["leka"],
+     doing: ["äta"],
+     test: ["jobba", "läsa"],
+     done: ["musik", "måla"]
 }
 
-let username = "fon";
-let password = "fon";
+
 let boards = document.querySelectorAll(".boards");
 let key = 0;
 let icebox = document.getElementById("icebox");
@@ -64,14 +75,15 @@ function display() {
     boards.forEach(function (bor) {
         bor.innerHTML = bor.id;
     });
-
-    ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
-        document.getElementById(info).innerHTML += data[info].map(function (item) {
-            key++
-            return `<li id="${key}" class="drag" draggable='true'>${item}<i class="fas fa-trash-alt"></i></li>`
-        }).join(" ");
-
-    })
+        
+        ["icebox", "todo", "doing", "test", "done"].forEach(function (info) {
+            document.getElementById(info).innerHTML += data[info].map(function (item) {
+                key++
+                return `<li id="${key}" class="drag" draggable='true'>${item}<i class="fas fa-trash-alt"></i></li>`
+            }).join(" ");
+       
+        })
+    
     key = 0;
 }
 
@@ -119,8 +131,8 @@ function push(evt){
 
 // ____________ localstorage
 let login_but = document.querySelector(".login_button")
-/*
- login_but.addEventListener('click',function(login){              // complain about, probably need login_but
+
+ login_but.addEventListener('click',function(login){             
    if(localStorage.getItem("index")) {
        let temp = JSON.parse(localStorage.getItem("index"));
        data = temp;
@@ -131,11 +143,12 @@ let login_but = document.querySelector(".login_button")
        };
    display();
 });
-*/
+
 let logout_but = document.querySelector('.log_out');
 logout_but.addEventListener('click',function(logout){
    localStorage.clear();
    localStorage.setItem(index,JSON.stringify(data))
+   logout1();
    console.log("logout");
 });
 
@@ -144,12 +157,34 @@ login_but.addEventListener('click', ready)
 
 
 //aleksandra 
-function ready() {
-
+function ready() {   
+    let user =[];
     let inputUser = document.getElementById("username");
     let inputPass = document.getElementById("userpass")
+    console.log(dataSet1);
+    
+    for (var i = 0; i < dataSet1.length; i++) {
+        if (dataSet1[i].hasOwnProperty("username")) {
+            console.log("1")
+            console.log(dataSet1[i].username);
+            console.log(inputUser.value);
+            if (dataSet1[i].username == inputUser.value) {
+                console.log("2")
+                if(dataSet1[i].password == inputPass.value){
+                    let inputUser1 = inputUser.value;
+                    let inputPass1 = inputPass.value;
+                    user.push(inputUser1);
+                    user.push(inputPass1);
+                     console.log(user);                   
+                };
+                break; //bye bye for loop
+            }
+        }
+       
+    }
 
-    if(username == inputUser.value && password == inputPass.value){
+  
+    if(user[0] == inputUser.value && user[1] == inputPass.value){
         display();
         document.getElementById("userScreen").style.display = 'block';
         document.getElementById("loginScreen").style.display = 'none';
@@ -158,3 +193,11 @@ function ready() {
         alert("Wrong Username or Password");
     }
 }
+
+function logout1(){
+    console.log("logout_again")
+    display();
+        document.getElementById("userScreen").style.display = 'none';
+        document.getElementById("loginScreen").style.display = 'block';
+}
+});
