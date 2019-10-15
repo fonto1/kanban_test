@@ -65,7 +65,8 @@ function del(){
 
 function dragStart(evt) {
     evt.dataTransfer.setData("text", evt.target.id);
-    console.log("dragging...")
+    console.log("dragging...");
+    selected = evt.target;
 }
 
 function dragEnd() {
@@ -99,13 +100,22 @@ function create() {
 
 function dragOver(e) {
     e.preventDefault();
-    console.log("over")
+    console.log("over");
+    if (e.target.parentNode.className == 'boards') {
+        e.preventDefault();
+        if ( isBefore( selected, e.target ) ) { 
+            e.target.parentNode.insertBefore( selected, e.target ) 
+        } else {
+            e.target.parentNode.insertBefore( selected, e.target.nextSibling )
+        }
+    }
 }
 
 function dragDrop(evt) {
 
     if (evt.target.className == 'boards') {
         evt.preventDefault();
+        selected = null;
         let db = evt.dataTransfer.getData("text");
         console.log("dropped")
         push(evt)
@@ -205,4 +215,20 @@ function logout1(){
         document.getElementById("userScreen").style.display = 'none';
         document.getElementById("loginScreen").style.display = 'block';
 }
-});
+
+function isBefore(el1, el2) {
+    if (el2.parentNode === el1.parentNode) {
+       let cur = el1.previousSibling;
+       while (cur != undefined) {
+          if (cur === el2) {
+             return true;
+          }
+          cur = cur.previousSibling;
+       }
+    } else {
+       return false;
+    }
+ }
+
+
+}); // fetch ends
