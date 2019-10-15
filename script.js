@@ -10,6 +10,7 @@ fetch("users.json")
 
 
 // ---------------------------------
+/*
 let data = {
      icebox: ["hoppa", "gråta"],
      todo: ["leka"],
@@ -17,7 +18,7 @@ let data = {
      test: ["jobba", "läsa"],
      done: ["musik", "måla"]
 }
-
+*/
 
 let boards = document.querySelectorAll(".boards");
 let key = 0;
@@ -72,8 +73,9 @@ function dragEnd() {
 }
 
 function display() {
-
-    if(data.length <=0){
+    console.log(data.length)
+    console.log(data)
+    if(data.length <=5){
         console.log("empty")
         return
     } else {
@@ -144,7 +146,13 @@ let login_but = document.querySelector(".login_button")
        }
    // if not - create an empty []
    else {
-       data = [];
+       data = {
+        icebox: [],
+        todo:[],
+        doing: [],
+        test: [],
+        done: []
+       }
        };
    display();
 });
