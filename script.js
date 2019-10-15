@@ -132,9 +132,9 @@ function push(evt){
 // ____________ localstorage
     
      
-    function ls(input){
-   if(localStorage.getItem(input)) {
-       let temp = JSON.parse(localStorage.getItem(input));
+    function ls(){
+   if(localStorage.getItem(index)) {
+       let temp = JSON.parse(localStorage.getItem(index));
        data = temp;
        }
    // if not - create an empty []
@@ -183,7 +183,7 @@ function ready() {
                     user.push(inputPass1);
                      console.log(user);   
                      index = inputUser1         
-                     ls(inputUser1)       
+                     ls()       
                 };
                 break; //bye bye for loop
             }
