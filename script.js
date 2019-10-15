@@ -27,7 +27,8 @@ let todo = document.getElementById("todo");
 let doing = document.getElementById("doing");
 let test = document.getElementById("test");
 let done = document.getElementById("done");
-let index = "index";
+let index;
+let data;
 
 
 
@@ -139,11 +140,11 @@ function push(evt){
 
 
 // ____________ localstorage
-let login_but = document.querySelector(".login_button")
-
- login_but.addEventListener('click',function(login){             
-   if(localStorage.getItem("index")) {
-       let temp = JSON.parse(localStorage.getItem("index"));
+    
+     
+    function ls(){
+   if(localStorage.getItem(index)) {
+       let temp = JSON.parse(localStorage.getItem(index));
        data = temp;
        }
    // if not - create an empty []
@@ -157,17 +158,17 @@ let login_but = document.querySelector(".login_button")
        }
        };
    display();
-});
+};
 
 let logout_but = document.querySelector('.log_out');
 logout_but.addEventListener('click',function(logout){
-   localStorage.clear();
+ //  localStorage.clear();
    localStorage.setItem(index,JSON.stringify(data))
    logout1();
    console.log("logout");
 });
 
-
+let login_but = document.getElementById("login_button")
 login_but.addEventListener('click', ready)
 
 
@@ -190,7 +191,9 @@ function ready() {
                     let inputPass1 = inputPass.value;
                     user.push(inputUser1);
                     user.push(inputPass1);
-                     console.log(user);                   
+                     console.log(user);   
+                     index = inputUser1         
+                     ls()       
                 };
                 break; //bye bye for loop
             }
