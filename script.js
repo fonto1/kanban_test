@@ -72,6 +72,11 @@ function dragEnd() {
 }
 
 function display() {
+
+    if(data.length <=0){
+        console.log("empty")
+        return
+    } else {
     boards.forEach(function (bor) {
         bor.innerHTML = bor.id;
     });
@@ -87,7 +92,7 @@ function display() {
     key = 0;
 }
 
-
+}
 
 
 
