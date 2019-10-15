@@ -102,13 +102,22 @@ function create() {
 function dragOver(e) {
     e.preventDefault();
     console.log("over");
+    let fromTarget = document.getElementById(selected.id).parentElement.id 
+    let indexInArray;
     if (e.target.parentNode.className == 'boards') {
         e.preventDefault();
-        if ( isBefore( selected, e.target ) ) { 
-            e.target.parentNode.insertBefore( selected, e.target ) 
+        if ( isBefore( selected, e.target ) ) {
+            e.target.parentNode.insertBefore( selected, e.target );
         } else {
-            e.target.parentNode.insertBefore( selected, e.target.nextSibling )
+            e.target.parentNode.insertBefore( selected, e.target.nextSibling );
         }
+        let newArray = [];
+        let listArray = e.target.parentElement.querySelectorAll("li");
+        listArray.forEach(element => {
+            newArray.push(element.innerText);            
+        });
+        // console.log(newArray);
+        data[fromTarget] = newArray;
     }
 }
 
