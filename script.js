@@ -73,12 +73,7 @@ function dragEnd() {
 }
 
 function display() {
-    console.log(data.length)
-    console.log(data)
-    if(data.length <=5){
-        console.log("empty")
-        return
-    } else {
+   
     boards.forEach(function (bor) {
         bor.innerHTML = bor.id;
     });
@@ -90,10 +85,7 @@ function display() {
             }).join(" ");
        
         })
-    
     key = 0;
-}
-
 }
 
 
