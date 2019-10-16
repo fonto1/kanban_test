@@ -1,5 +1,4 @@
 fetch("users.json")
-
     .then((response) => {
 
         return response.json();
