@@ -30,7 +30,7 @@ let done = document.getElementById("done");
 let index;
 let data;
 
-
+console.log("test");
 
 
 let button = document.getElementById("button");
