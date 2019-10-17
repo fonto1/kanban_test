@@ -87,9 +87,48 @@ function display() {
             }).join(" ");
        
         })
+        
     key = 0;
+   
 }
 
+
+function update(){
+
+
+    let icebox2 = icebox.getElementsByTagName("li");
+    let todo2 = todo.getElementsByTagName("li");
+    let doing2 = doing.getElementsByTagName("li");
+    let test2 = test.getElementsByTagName("li");
+    let done2 = done.getElementsByTagName("li");
+
+Object.keys(icebox2).forEach(function(count){
+        data.icebox[count] = icebox2[count].innerText
+        console.log(data.icebox[count])
+})
+
+Object.keys(todo2).forEach(function(count){
+    data.todo[count] = todo2[count].innerText
+    console.log(data.todo[count])
+})
+
+Object.keys(doing2).forEach(function(count){
+    data.doing[count] = doing2[count].innerText
+    console.log(data.doing[count])
+})
+
+Object.keys(test2).forEach(function(count){
+    data.test[count] = test2[count].innerText
+    console.log(data.test[count])
+})
+
+Object.keys(done2).forEach(function(count){
+    data.done[count] = done2[count].innerText
+    console.log(data.done[count])
+})
+
+display()
+}
 
 
 function create() {
@@ -109,8 +148,13 @@ function dragOver(e) {
         } else {
             e.target.parentNode.insertBefore( selected, e.target.nextSibling )
         }
+
+
+        
     }
 }
+
+
 
 function dragDrop(evt) {
 
@@ -121,6 +165,10 @@ function dragDrop(evt) {
         push(evt)
         display()
   
+    }
+
+    if(evt.target.className == "drag"){
+        update()
     }
 
 }
@@ -202,7 +250,7 @@ function ready() {
 
   
     if(user[0] == inputUser.value && user[1] == inputPass.value){
-        display();
+     
         document.getElementById("userScreen").style.display = 'block';
         document.getElementById("loginScreen").style.display = 'none';
         
