@@ -117,11 +117,10 @@ function dragDrop(evt) {
     if (evt.target.className == 'boards') {
         evt.preventDefault();
         selected = null;
-        let db = evt.dataTransfer.getData("text");
         console.log("dropped")
         push(evt)
-        evt.target.appendChild(document.getElementById(db));
-        console.log(db)
+        display()
+  
     }
 
 }
